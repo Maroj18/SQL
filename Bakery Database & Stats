@@ -1,0 +1,33 @@
+---Create a bakery database
+
+CREATE TABLE Stone_Mountain_Bakery (id INTEGER PRIMARY KEY, item TEXT, quantity INTEGER, price INTEGER, served_warm TEXT);
+
+INSERT INTO Stone_Mountain_Bakery VALUES 
+(1, "Chocolate chip muffin", 25, 1.75, "yes"),
+(2, "chocolate chip cookie", 50, 1.25, "yes"),
+(3, "S'more cookie", 40, 1.50, "yes"),
+(4, "Blueberry muffin", 25, 2.0, "no"),
+(5, "Double chocolate cookie", 25, 2.25, "yes"),
+(6, "Red velvet cookie", 45, 2.25, "yes"),
+(7, "Sugar cookie", 60, 1.25, "no"),
+(8, "Brownie", 60, 2.25, "yes"),
+(9, "Blondie", 25, 2.50, "no"),
+(10, "Chocolate crinkle cookie", 35, 2.00, "no"),
+(11, "Oatmeal cookie", 15, 1.25, "yes"),
+(12, "White chocolate scone", 28, 1.75, "no"),
+(13, "Lava cake", 10, 2.75, "yes"),
+(14, "Blueberry cookie", 15, 1.50, "no"),
+(15, "Whole wheat loaf", 25, 3.00, "no");
+ 
+---what is the most expensive item
+SELECT MAX(price) FROM Stone_Mountain_Bakery;
+
+---which items have a quantity of 25 or more
+SELECT * FROM Stone_Mountain_Bakery WHERE quantity > 25;
+
+---display the items from the database served warm
+SELECT * FROM Stone_Mountain_Bakery WHERE served_warm IN ("yes");
+
+---display the database ordered by quantity
+SELECT * FROM Stone_Mountain_Bakery ORDER BY quantity;
+
