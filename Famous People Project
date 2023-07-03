@@ -1,0 +1,60 @@
+/* Create table about the people and what they do */
+
+CREATE TABLE Famous_people (id INTEGER PRIMARY KEY AUTOINCREMENT,
+    fullname TEXT);
+    
+INSERT INTO Famous_people (fullname) VALUES 
+("Tom Hardy"),
+("Cillian Murphy"),
+("Doja Cat"),
+("Blake Shelton"),
+("Cristiano Ronaldo"),
+("Albert Einstein"),
+("Blake Lively"),
+("Ryan Reynolds");
+
+CREATE TABLE Profession (id INTEGER PRIMARY KEY AUTOINCREMENT, person_id INTEGER, profession TEXT);
+INSERT INTO Profession (person_id,profession) VALUES
+(1, "Actor"),
+(2, "Actor"),
+(3, "Singer"),
+(4, "Singer"),
+(5, "Soccer Player"),
+(6, "Physicist"),
+(7, "Actor"),
+(8, "Actor");
+
+CREATE TABLE Where_From (id INTEGER PRIMARY KEY AUTOINCREMENT, person_id INTEGER, Location TEXT);
+INSERT INTO Where_From (person_id, Location) VALUES
+(1, "London, United Kingdom"),
+(2, "Douglas, Ireland"),
+(3, "Los Angeles, California"),
+(4, "Ada, Oklahoma"),
+(5, "Portugal"),
+(6, "Ulm, Germany"),
+(7, "Los Angeles, California"),
+(8, "Vancouver, Canada");
+
+---Displaying famous persons name and where they live---
+SELECT Famous_people.fullname, Where_From.Location
+FROM Famous_people
+JOIN Where_From
+ON Famous_people.id = Where_From.person_id;
+
+---Displaying famous persons name and their perfession---
+SELECT Famous_people.fullname, Profession.profession
+FROM Profession
+LEFT OUTER JOIN Famous_people
+ON Famous_people.id = Profession.person_id;
+
+---Combining all three tables to display all relevent data---
+SELECT Famous_people.fullname, Where_From.Location, Profession.profession
+FROM Famous_people
+JOIN Where_From
+ON Famous_people.id = Where_From.person_id
+JOIN Profession 
+ON Famous_people.id = Profession.person_id
+ORDER BY fullname;
+
+
+
