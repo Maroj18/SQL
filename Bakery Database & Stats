@@ -1,4 +1,4 @@
----Create a bakery database
+---Create a bakery database---
 
 CREATE TABLE Stone_Mountain_Bakery (id INTEGER PRIMARY KEY, item TEXT, quantity INTEGER, price INTEGER, served_warm TEXT);
 
@@ -19,15 +19,15 @@ INSERT INTO Stone_Mountain_Bakery VALUES
 (14, "Blueberry cookie", 15, 1.50, "no"),
 (15, "Whole wheat loaf", 25, 3.00, "no");
  
----what is the most expensive item
+---what is the most expensive item---
 SELECT MAX(price) FROM Stone_Mountain_Bakery;
 
----which items have a quantity of 25 or more
+---which items have a quantity of 25 or more---
 SELECT * FROM Stone_Mountain_Bakery WHERE quantity > 25;
 
----display the items from the database served warm
+---display the items from the database served warm---
 SELECT * FROM Stone_Mountain_Bakery WHERE served_warm IN ("yes");
 
----display the database ordered by quantity
+---display the database ordered by quantity---
 SELECT * FROM Stone_Mountain_Bakery ORDER BY quantity;
 
