@@ -43,13 +43,23 @@ LIMIT 1;
 SELECT artist_name, track_name, AVG(danceability)
 FROM Spotifydata
 GROUP BY artist_name;
-
 SELECT artist_name, track_name, AVG(danceability)
 FROM Spotifydata
 GROUP BY track_name;
 
-#Then I determined who the Top 10 artists are by popularity
+# I determined who the Top 10 artists are by popularity
 SELECT track_name, artist_name, popularity
 FROM Spotifydata
 ORDER BY popularity desc 
 LIMIT 10
+
+# Then I determined who the top 5 aritists are by loudness and duration.
+SELECT artist_name, loudness, duration_ms
+FROM Spotifydata
+ORDER BY loudness desc
+LIMIT 5
+SELECT artist_name, loudness, duration_ms
+FROM Spotifydata
+ORDER BY duration_ms desc
+LIMIT 5
+
