@@ -79,7 +79,7 @@ SELECT * FROM CityBikeLanes LIMIT 10
 SELECT * FROM CityBikeLanes WHERE street='Walnut'
 
 
-# I listed all the bike lanes that have an average safety rating of 4.0 or higher and displayed the information to show the average safety rating for each of those bike lanes, and a label that says "Safe Lane".
+# I listed all the bike lanes that have an average safety rating of 4.0 or higher and displayed the information to show the average safety rating for each of those bike lanes, and a label that says "Safe Lane" using a CTE.
 WITH average_saftey_CTE AS (
   SELECT
  c.street ,AVG(c.safetyrating) AS 'Average_Saftey_Rating'
