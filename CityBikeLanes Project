@@ -1,3 +1,8 @@
+# For this project, I created a table to insert city bike lanes data into.
+# I then inserted city bike lanes data.
+# Finally, I performed analytics on the data using SQL. 
+
+
 CREATE TABLE BIT_DB.CityBikeLanes (
 id integer primary key,
 year_installed year not null,
@@ -70,12 +75,9 @@ INSERT INTO BIT_DB.CityBikeLanes values(60,2002, 2021,"Mouse",4.5,4.3,"no");
 
 SELECT * FROM CityBikeLanes LIMIT 10
 
+# I selected all data from CityBikeLanes that had a street name "Walnut".
 SELECT * FROM CityBikeLanes WHERE street='Walnut'
 
-
-SELECT street, AVG(safetyrating) as ' Average_Saftey_Rating'
-FROM citybikelanes
-GROUP BY street
 
 # I listed all the bike lanes that have an average safety rating of 4.0 or higher and displayed the information to show the average safety rating for each of those bike lanes, and a label that says "Safe Lane".
 WITH average_saftey_CTE AS (
