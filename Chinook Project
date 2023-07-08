@@ -1,0 +1,67 @@
+# For this project I first downloaded the database chinook.
+# I then uploaded the data tables into SQLite.
+# From there I analized the data then came up with these questions and wrote queries to answer them.
+
+#Show Customers (their full names, customer ID) who are from canada.
+SELECT 
+FirstName, LastName, customerid
+FROM customers
+WHERE Country = 'Canada'
+
+#Show all the Jazz tracks
+SELECT 
+tracks.Name, genres.Name
+FROM tracks
+LEFT JOIN genres
+ON tracks.GenreId = genres.GenreId
+WHERE genres.Name = 'Jazz'
+
+#Count all the invoices from 2009
+SELECT 
+Count (InvoiceDate)
+FROM invoices
+WHERE InvoiceDate LIKE '2009%'
+
+# How many employees are sales agents?
+SELECT COUNT(title) AS 'Number of Sales Agents'
+FROM employees
+WHERE title = 'Sales Support Agent'
+
+# How many sales did support rep 5 make?
+SELECT SUM(invoices.customerId), customers.SupportRepId
+FROM invoices
+LEFT JOIN customers
+ON customers.CustomerId = invoices.CustomerId
+WHERE customers.SupportRepId = 5
+
+# Show the customers last name and their purchase total
+SELECT customers.LastName, SUM(invoices.total)
+FROM invoices
+JOIN customers
+ON customers.CustomerId = invoices.CustomerId
+GROUP BY customers.LastName
+ORDER BY SUM(invoices.total) desc
+
+# Show the Invoice Total, Customer name, Country, and Sales Agent name for all invoices and customers.
+SELECT customers.LastName, customers.FirstName, customers.SupportRepId, customers.Country, SUM(invoices.total)
+FROM invoices
+JOIN customers
+ON customers.CustomerId = invoices.CustomerId
+GROUP BY customers.LastName
+ORDER BY SUM(invoices.total) desc
+
+
+# How many Invoices were there in 2009?
+SELECT COUNT(invoiceid)
+FROM invoices
+WHERE invoicedate LIKE '2009%'
+
+# Provide a query that shows all the Tracks, and include the Album name, Media type, and Genre.
+SELECT tracks.Name, albums.Title, media_types.Name, genres.Name
+FROM tracks
+JOIN albums
+ON tracks.AlbumId = albums.AlbumId
+JOIN genres
+ON genres.GenreId = tracks.GenreId
+JOIN media_types
+ON tracks.MediaTypeId = media_types.MediaTypeId
